@@ -1,0 +1,100 @@
+[
+    {
+        "label": "MPI",
+        "importPath": "mpi4py",
+        "description": "mpi4py",
+        "isExtraImport": true,
+        "detail": "mpi4py",
+        "documentation": {}
+    },
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "main",
+        "kind": 2,
+        "importPath": "coloring",
+        "description": "coloring",
+        "peekOfCode": "def main():\n    comm = MPI.COMM_WORLD\n    rank = comm.Get_rank()\n    size = comm.Get_size()\n    # Graph representation (adjacency list)\n    graph = {\n        6: [3, 2],\n        3: [6, 2, 0, 4],\n        2: [6, 3, 4],\n        0: [3, 4, 7],",
+        "detail": "coloring",
+        "documentation": {}
+    },
+    {
+        "label": "has_highest_rank",
+        "kind": 2,
+        "importPath": "coloring",
+        "description": "coloring",
+        "peekOfCode": "def has_highest_rank(rank, graph, colors):\n    for neighbor in graph[rank]:\n        if colors[neighbor] is None and neighbor > rank:\n            return False\n    return True\ndef choose_color(neighbor_colors, available_colors):\n    for color in available_colors:\n        if color not in neighbor_colors.values():\n            return color\n    return None",
+        "detail": "coloring",
+        "documentation": {}
+    },
+    {
+        "label": "choose_color",
+        "kind": 2,
+        "importPath": "coloring",
+        "description": "coloring",
+        "peekOfCode": "def choose_color(neighbor_colors, available_colors):\n    for color in available_colors:\n        if color not in neighbor_colors.values():\n            return color\n    return None\ndef notify_neighbors(comm, graph, rank, color):\n    for neighbor in graph[rank]:\n        comm.send(color, dest=neighbor)\ndef update_graph_status(comm, graph, rank, colors, neighbor_colors):\n    for neighbor in graph[rank]:",
+        "detail": "coloring",
+        "documentation": {}
+    },
+    {
+        "label": "notify_neighbors",
+        "kind": 2,
+        "importPath": "coloring",
+        "description": "coloring",
+        "peekOfCode": "def notify_neighbors(comm, graph, rank, color):\n    for neighbor in graph[rank]:\n        comm.send(color, dest=neighbor)\ndef update_graph_status(comm, graph, rank, colors, neighbor_colors):\n    for neighbor in graph[rank]:\n        neighbor_color = comm.recv(source=neighbor)\n        neighbor_colors[neighbor] = neighbor_color\n        colors[neighbor] = neighbor_color\nif __name__ == \"__main__\":\n    main()",
+        "detail": "coloring",
+        "documentation": {}
+    },
+    {
+        "label": "update_graph_status",
+        "kind": 2,
+        "importPath": "coloring",
+        "description": "coloring",
+        "peekOfCode": "def update_graph_status(comm, graph, rank, colors, neighbor_colors):\n    for neighbor in graph[rank]:\n        neighbor_color = comm.recv(source=neighbor)\n        neighbor_colors[neighbor] = neighbor_color\n        colors[neighbor] = neighbor_color\nif __name__ == \"__main__\":\n    main()",
+        "detail": "coloring",
+        "documentation": {}
+    },
+    {
+        "label": "euclideanDistance",
+        "kind": 2,
+        "importPath": "MinimumÖklidMesafesininHesaplanması",
+        "description": "MinimumÖklidMesafesininHesaplanması",
+        "peekOfCode": "def euclideanDistance(point1, point2):\n    return math.sqrt((point2[0] - point1[0]) ** 2 + (point2[1] - point1[1]) ** 2)\ndistances = []\nfor i in range(len(points)):\n    for j in range(i + 1, len(points)):\n        dist = euclideanDistance(points[i], points[j])\n        distances.append(dist)\nmin_distance = min(distances)\nprint(\"Minimum Euclidean distance:\", min_distance)",
+        "detail": "MinimumÖklidMesafesininHesaplanması",
+        "documentation": {}
+    },
+    {
+        "label": "points",
+        "kind": 5,
+        "importPath": "MinimumÖklidMesafesininHesaplanması",
+        "description": "MinimumÖklidMesafesininHesaplanması",
+        "peekOfCode": "points = [(1, 2), (3, 4), (5, 6), (7, 8)]  #example points\ndef euclideanDistance(point1, point2):\n    return math.sqrt((point2[0] - point1[0]) ** 2 + (point2[1] - point1[1]) ** 2)\ndistances = []\nfor i in range(len(points)):\n    for j in range(i + 1, len(points)):\n        dist = euclideanDistance(points[i], points[j])\n        distances.append(dist)\nmin_distance = min(distances)\nprint(\"Minimum Euclidean distance:\", min_distance)",
+        "detail": "MinimumÖklidMesafesininHesaplanması",
+        "documentation": {}
+    },
+    {
+        "label": "distances",
+        "kind": 5,
+        "importPath": "MinimumÖklidMesafesininHesaplanması",
+        "description": "MinimumÖklidMesafesininHesaplanması",
+        "peekOfCode": "distances = []\nfor i in range(len(points)):\n    for j in range(i + 1, len(points)):\n        dist = euclideanDistance(points[i], points[j])\n        distances.append(dist)\nmin_distance = min(distances)\nprint(\"Minimum Euclidean distance:\", min_distance)",
+        "detail": "MinimumÖklidMesafesininHesaplanması",
+        "documentation": {}
+    },
+    {
+        "label": "min_distance",
+        "kind": 5,
+        "importPath": "MinimumÖklidMesafesininHesaplanması",
+        "description": "MinimumÖklidMesafesininHesaplanması",
+        "peekOfCode": "min_distance = min(distances)\nprint(\"Minimum Euclidean distance:\", min_distance)",
+        "detail": "MinimumÖklidMesafesininHesaplanması",
+        "documentation": {}
+    }
+]
